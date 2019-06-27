@@ -10,19 +10,21 @@
     size_hint: (None, None)
     background_color: (255,255,0,.8)  # yellow
 
-RelativeLayout:
+BoxLayout:
     orientation: 'vertical'
     Label:
         font_size: '50 dp'
         text: 'Lamp Control'
-        pos_hint: {'center_x':.5, 'center_y': .85}
+        pos_hint: {'center_x':.5}
+        # pos_hint: {'center_x':.5, 'center_y': .85}
     TextInput:
         id: serverip
         height: '30 dp'
         width: '150 dp'
         size_hint: (None, None)
         #pos_hint:{'right': 1}
-        pos_hint: {'center_x':.5, 'center_y': .65}
+        pos_hint: {'center_x':.5}
+        # pos_hint: {'center_x':.5, 'center_y': .65}
         background_color: (128,128,128,1)
         text: 'Enter Server IP'
         multiline: False
@@ -35,7 +37,7 @@ RelativeLayout:
         width: '300 dp'
         size_hint: (None, None)
         pos_hint:{'top': 1}
-        pos_hint: {'center_x':.5, 'center_y': .55}
+        pos_hint: {'center_x':.5}
         padding: '20 dp'
         spacing: '20 dp'
         Button:
@@ -52,7 +54,8 @@ RelativeLayout:
             background_color: (0,0,255,1)    # blue
     MyButton:
         id: state
-        pos_hint: {'center_x':.5, 'center_y': .45}
+        # pos_hint: {'center_x':.5, 'center_y': .45}
+        pos_hint: {'center_x':.5}
         text: 'State'
         on_press: app.get_info('state')
         background_color: (255,255,0,.8)  # yellow
@@ -62,30 +65,65 @@ RelativeLayout:
         font_size: '25 dp'
         text: 'log data'
         background_color: (255,255,0,1)  # yellow
-        pos_hint: {'center_x':.5, 'center_y': .35}
+        # pos_hint: {'center_x':.5, 'center_y': .35}
+        pos_hint: {'center_x':.5}
 
-    GridLayout:
-        cols:2
-        spacing: '10 dp'
-        pos_hint: {'center_x': 0.89, 'center_y': -0.2}
+    # GridLayout:
+    #     cols:2
+    #     spacing: '10 dp'
+        # pos_hint: {'center_x': 0.89, 'center_y': 0.0}
+        # pos_hint: {'center_x':.}
+
+    BoxLayout:
+        orientation: 'horizontal'
+        height: '80 dp'
+        width: '300 dp'
+        size_hint: (None, None)
+        pos_hint:{'top': 1}
+        pos_hint: {'center_x':.5}
+        padding: '20 dp'
+        spacing: '20 dp'
         MyButton:
             id: temp
             on_press: app.get_info('temp')
             text: 'Temperature'
+            pos_hint: {'center_x':.25}
         MyLabel:
             id: temp_val
             text: 'NA'
+
+    BoxLayout:
+        orientation: 'horizontal'
+        height: '80 dp'
+        width: '300 dp'
+        size_hint: (None, None)
+        pos_hint:{'top': 1}
+        pos_hint: {'center_x':.5}
+        padding: '20 dp'
+        spacing: '20 dp'
         MyButton:
             id: hum
             on_press: app.get_info('hum')
             text: 'Humidity'
+            pos_hint: {'center_x':.75}
         MyLabel:
             id: hum_val
             text: 'NA'
+
+    BoxLayout:
+        orientation: 'horizontal'
+        height: '80 dp'
+        width: '300 dp'
+        size_hint: (None, None)
+        pos_hint:{'top': 1}
+        pos_hint: {'center_x':.5}
+        padding: '20 dp'
+        spacing: '20 dp'
         MyButton:
             id: lum
             on_press: app.get_info('lum')
             text: 'Luminosity'
+            pos_hint: {'center_x':.5}
         MyLabel:
             id: lum_val
             text: 'NA'
