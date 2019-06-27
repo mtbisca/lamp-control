@@ -1,0 +1,91 @@
+<MyLabel@Label>:
+    font_size: '25 dp'
+    height: '37 dp'
+    width: '180 dp'
+    size_hint: (None, None)
+<MyButton@Button>:
+    font_size: '25 dp'
+    height: '37 dp'
+    width: '180 dp'
+    size_hint: (None, None)
+    background_color: (255,255,0,.8)  # yellow
+
+RelativeLayout:
+    orientation: 'vertical'
+    Label:
+        font_size: '50 dp'
+        text: 'Lamp Control'
+        pos_hint: {'center_x':.5, 'center_y': .85}
+    TextInput:
+        id: serverip
+        height: '30 dp'
+        width: '150 dp'
+        size_hint: (None, None)
+        #pos_hint:{'right': 1}
+        pos_hint: {'center_x':.5, 'center_y': .65}
+        background_color: (128,128,128,1)
+        text: 'Enter Server IP'
+        multiline: False
+        on_text_validate:  app.validate_server()
+        on_touch_down: self.text = ''
+
+    BoxLayout:
+        orientation: 'horizontal'
+        height: '80 dp'
+        width: '300 dp'
+        size_hint: (None, None)
+        pos_hint:{'top': 1}
+        pos_hint: {'center_x':.5, 'center_y': .55}
+        padding: '20 dp'
+        spacing: '20 dp'
+        Button:
+            id: turn_on
+            font_size: '30 dp'
+            text: 'On'
+            on_press: app.turn_on()
+            background_color: (255,0,0,1)    # red
+        Button:
+            id: turn_off
+            font_size: '30 dp'
+            text: 'Off'
+            on_press: app.turn_off()
+            background_color: (0,0,255,1)    # blue
+    MyButton:
+        id: state
+        pos_hint: {'center_x':.5, 'center_y': .45}
+        text: 'State'
+        on_press: app.get_info('state')
+        background_color: (255,255,0,.8)  # yellow
+        background_normal: ''
+    Label:
+        id: log
+        font_size: '25 dp'
+        text: 'log data'
+        background_color: (255,255,0,1)  # yellow
+        pos_hint: {'center_x':.5, 'center_y': .35}
+
+    GridLayout:
+        cols:2
+        spacing: '10 dp'
+        pos_hint: {'center_x': 0.89, 'center_y': -0.2}
+        MyButton:
+            id: temp
+            on_press: app.get_info('temp')
+            text: 'Temperature'
+        MyLabel:
+            id: temp_val
+            text: 'NA'
+        MyButton:
+            id: hum
+            on_press: app.get_info('hum')
+            text: 'Humidity'
+        MyLabel:
+            id: hum_val
+            text: 'NA'
+        MyButton:
+            id: lum
+            on_press: app.get_info('lum')
+            text: 'Luminosity'
+        MyLabel:
+            id: lum_val
+            text: 'NA'

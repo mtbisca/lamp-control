@@ -1,0 +1,4 @@
+title=LampControl
+author=Celio G.
+orientation=portrait
+
